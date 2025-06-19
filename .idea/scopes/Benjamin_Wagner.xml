@@ -1,0 +1,3 @@
+<component name="DependencyValidationManager">
+  <scope name="Benjamin Wagner" pattern="file[zeugnis]:src/*" />
+</component>
