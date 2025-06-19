@@ -24,15 +24,14 @@
 
 namespace App\Domain\Language\Enum;
 
+use App\System\Util\EnumTrait;
+
 enum LanguageType: string
 {
-    case Primary_FS = "1. Fremdsprache";
-    case Secondary_FS  = "2./3. fortgeführte Fremdsprache";
-    case Initial_FS = "neu einsetzende Fremdsprache";
+    case Primary_FL = "1. Fremdsprache";
+    case Secondary_FL  = "2./3. fortgeführte Fremdsprache";
+    case Initial_FL = "neu einsetzende Fremdsprache";
 
-    public function toString(): string
-    {
-        return $this->value;
-    }
+    use EnumTrait;
 
 }

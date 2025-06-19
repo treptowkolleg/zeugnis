@@ -24,11 +24,15 @@
 
 namespace App\Domain\Language\Enum;
 
+use App\System\Util\EnumTrait;
+
 enum Language: string
 {
     case English = "Englisch";
     case French = "Französisch";
     case Spanish = "Spanisch";
     case Latin = "Latein";
+
+    use EnumTrait;
 
 }

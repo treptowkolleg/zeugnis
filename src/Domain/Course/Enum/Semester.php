@@ -24,6 +24,8 @@
 
 namespace App\Domain\Course\Enum;
 
+use App\System\Util\EnumTrait;
+
 enum Semester: string
 {
     case VK = "Vorkurs";
@@ -32,5 +34,7 @@ enum Semester: string
     case Q2 = "2. Semester der Qualifikationsphase";
     case Q3 = "3. Semester der Qualifikationsphase";
     case Q4 = "4. Semester der Qualifikationsphase";
+
+    use EnumTrait;
 
 }

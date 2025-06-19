@@ -22,22 +22,49 @@
  * SOFTWARE.
  */
 
-namespace App\Domain\GeR\Enum;
+namespace App\System\Util;
 
-use App\System\Util\EnumTrait;
+use BackedEnum;
 
-enum GeRLevel: string
+/**
+ * Trait für PHP 8.2+ Backed Enums (string|int).
+ *
+ * @mixin BackedEnum
+ */
+trait EnumTrait
 {
-    case A1 = "A1";
-    case A2 = "A2";
-    case A2_B1 = "A2/B1";
-    case B1 = "B1";
-    case B1_B2 = "B1/B2";
-    case B2 = "B2";
-    case B2_C1 = "B2/C1";
-    case C1 = "C1";
-    case NONE = "-";
 
-    use EnumTrait;
+    public function getKey(): string
+    {
+        return $this->name;
+    }
+
+    public function getValue(): string
+    {
+        return $this->value;
+    }
+
+    public function getKeyValuePair(): array
+    {
+        return [$this->name => $this->value];
+    }
+
+    public function toArray(): array
+    {
+        $output = [];
+        foreach (self::cases() as $case) {
+            $output[$case->name] = $case->value;
+        }
+        return $output;
+    }
+
+    public static function labels(array $map): array
+    {
+        $result = [];
+        foreach (self::cases() as $case) {
+            $result[$case->name] = $map[$case->name] ?? $case->value;
+        }
+        return $result;
+    }
 
 }
