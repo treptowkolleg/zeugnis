@@ -22,44 +22,14 @@
  * SOFTWARE.
  */
 
-namespace App;
+namespace App\System\Model;
 
-use App\Domain\GeR\Enum\GeRLevel;
-use App\Domain\GeR\Resolver\GeRLevelResolver;
-use App\Domain\Language\Model\LanguageTrajectory;
-use App\Domain\Student\Model\StudentRepository;
-
-class Kernel
+class MySQLConnector extends \PDO
 {
 
     public function __construct()
     {
-        // Person abrufen
-        $student = StudentRepository::findOneByLastname("wagner");
-
-        $languageLevelResolver = new GeRLevelResolver();
-
-        if (!$student) exit("Student not found.");
-
-        echo sprintf("Es gibt %d Sprachverläufe.\n", $student->getLanguageTrajectories()->count());
-        // Alle GeR-eingestuften Sprachkenntnisse ausgeben
-        foreach ($student->getLanguageTrajectories() as $languageTrajectory) {
-
-            /** @var LanguageTrajectory $languageTrajectory */
-            $level = $languageLevelResolver->resolve($languageTrajectory);
-
-            if($level == GeRLevel::NONE) continue;
-
-            echo sprintf(
-                "Dein GeR-Niveau für %s als %s mit Ende %s liegt bei %'.5s.\n",
-                $languageTrajectory->getLanguage()->getValue(),
-                $languageTrajectory->getType()->getValue(),
-                $languageTrajectory->getLastSemester()->getValue(),
-                $level->getValue()
-            );
-
-        }
-
+        parent::__construct('mysql:host=localhost;dbname=zeugnis_db;charset=utf8mb4','root');
     }
 
 }

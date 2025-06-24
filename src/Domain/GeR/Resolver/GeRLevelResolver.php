@@ -34,25 +34,24 @@ class GeRLevelResolver
 {
     public function resolve(LanguageTrajectory $trajectory): GeRLevel
     {
-        if ($trajectory->getLanguage() == Language::Latin)
-            return GeRLevel::NONE;
+        if ($trajectory->getLanguage() == Language::Latin) return GeRLevel::NONE;
 
         $isEnglish = $trajectory->getLanguage() == Language::English;
 
         return match ($trajectory->getType()) {
-            LanguageType::Primary_FL => match ($trajectory->getSemester()) {
+            LanguageType::Primary_FL => match ($trajectory->getLastSemester()) {
                 Semester::VK                => GeRLevel::NONE,
                 Semester::EP, Semester::Q1  => GeRLevel::B1,
                 Semester::Q2, Semester::Q3  => GeRLevel::B2,
                 Semester::Q4                => $isEnglish ? GeRLevel::B2_C1 : GeRLevel::B2,
             },
-            LanguageType::Secondary_FL => match ($trajectory->getSemester()) {
+            LanguageType::Secondary_FL => match ($trajectory->getLastSemester()) {
                 Semester::VK                => GeRLevel::NONE,
                 Semester::EP, Semester::Q1  => GeRLevel::B1,
                 Semester::Q2, Semester::Q3  => GeRLevel::B1_B2,
                 Semester::Q4                => $isEnglish ? GeRLevel::B2_C1 : GeRLevel::B2,
             },
-            LanguageType::Initial_FL => match ($trajectory->getSemester()) {
+            LanguageType::Initial_FL => match ($trajectory->getLastSemester()) {
                 Semester::VK                => GeRLevel::NONE,
                 Semester::EP, Semester::Q1  => GeRLevel::A2,
                 Semester::Q2, Semester::Q3  => GeRLevel::B1,

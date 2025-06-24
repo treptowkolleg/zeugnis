@@ -27,39 +27,61 @@ namespace App\Domain\Language\Model;
 use App\Domain\Course\Enum\Semester;
 use App\Domain\Language\Enum\Language;
 use App\Domain\Language\Enum\LanguageType;
+use App\Domain\Student\Model\Student;
 
 class LanguageTrajectory
 {
 
-    private readonly Language $language;
-    private readonly LanguageType $type;
-    private Semester $semester;
+    private ?int $language_trajectory_id = null;
+    private ?int $student_id = null;
+    private string $language;
+    private string $type;
+    private string $last_semester;
 
-    public function __construct(Language $language, LanguageType $type, Semester $lastSemester)
+    public function getLanguageTrajectoryId(): ?int
     {
-        $this->language = $language;
-        $this->type = $type;
-        $this->semester = $lastSemester;
+        return $this->language_trajectory_id;
     }
 
-    public function getLanguage(): Language
+    public function getStudentId(): ?int
     {
-        return $this->language;
+        return $this->student_id;
+    }
+
+    public function setStudent(?Student $student): void
+    {
+        $this->student_id = $student->getStudentId();
+    }
+
+    public function getLanguage(): ?Language
+    {
+        return Language::tryFrom($this->language);
+    }
+
+    public function setLanguage(Language $language): void
+    {
+        $this->language = $language->getValue();
     }
 
     public function getType(): LanguageType
     {
-        return $this->type;
+        return LanguageType::tryFrom($this->type);
     }
 
-    public function getSemester(): Semester
+    public function setType(LanguageType $type): void
     {
-        return $this->semester;
+        $this->type = $type->getValue();
     }
 
-    public function setSemester(Semester $semester): void
+
+    public function getLastSemester(): Semester
     {
-        $this->semester = $semester;
+        return Semester::tryFrom($this->last_semester);
+    }
+
+    public function setLastSemester(Semester $last_semester): void
+    {
+        $this->last_semester = $last_semester->getValue();
     }
 
 }

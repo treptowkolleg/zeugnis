@@ -22,38 +22,49 @@
  * SOFTWARE.
  */
 
-namespace App\Entity;
+namespace App\Domain\Student\Model;
 
+use App\Domain\Course\Model\Course;
 use App\Domain\Language\Model\LanguageTrajectory;
 use App\System\Util\ArrayCollection;
 
 class Student
 {
-    private ?int $id = null;
-    private ?string $name;
+    private ?int $student_id = null;
+    private ?string $first_name;
+    private ?string $last_name;
     private ArrayCollection $courses;
     private ArrayCollection $languageTrajectories;
 
-    public function __construct(string $name)
+    public function __construct()
     {
-        $this->name = $name;
         $this->courses = new ArrayCollection();
         $this->languageTrajectories = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getStudentId(): ?int
     {
-        return $this->id;
+        return $this->student_id;
     }
 
-    public function getName(): ?string
+    public function getFirstName(): ?string
     {
-        return $this->name;
+        return $this->first_name;
     }
 
-    public function setName(?string $name): void
+    public function setFirstName(?string $first_name): void
     {
-        $this->name = $name;
+        $this->first_name = $first_name;
+    }
+
+    public function getLastName(): ?string
+    {
+        return $this->last_name;
+    }
+
+    public function setLastName(?string $last_name): void
+    {
+        $this->last_name = $last_name;
     }
 
     public function getCourses(): ArrayCollection

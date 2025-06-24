@@ -28,12 +28,12 @@ use App\System\Util\EnumTrait;
 
 enum Semester: string
 {
-    case VK = "Vorkurs";
-    case EP = "Einführungsphase";
-    case Q1 = "1. Semester der Qualifikationsphase";
-    case Q2 = "2. Semester der Qualifikationsphase";
-    case Q3 = "3. Semester der Qualifikationsphase";
-    case Q4 = "4. Semester der Qualifikationsphase";
+    case VK = "vk";
+    case EP = "ep";
+    case Q1 = "q1";
+    case Q2 = "q2";
+    case Q3 = "q3";
+    case Q4 = "q4";
 
     use EnumTrait;
 

@@ -28,9 +28,9 @@ use App\System\Util\EnumTrait;
 
 enum LanguageType: string
 {
-    case Primary_FL = "1. Fremdsprache";
-    case Secondary_FL  = "2./3. fortgeführte Fremdsprache";
-    case Initial_FL = "neu einsetzende Fremdsprache";
+    case Primary_FL = "primary_fl";
+    case Secondary_FL  = "secondary_fl";
+    case Initial_FL = "initial_fl";
 
     use EnumTrait;
 

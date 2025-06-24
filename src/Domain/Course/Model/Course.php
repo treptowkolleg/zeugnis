@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 
-namespace App\Entity;
+namespace App\Domain\Course\Model;
 
 class Course
 {

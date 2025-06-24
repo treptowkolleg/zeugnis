@@ -28,10 +28,10 @@ use App\System\Util\EnumTrait;
 
 enum Language: string
 {
-    case English = "Englisch";
-    case French = "Französisch";
-    case Spanish = "Spanisch";
-    case Latin = "Latein";
+    case English = "eng";
+    case French = "fra";
+    case Spanish = "spa";
+    case Latin = "lat";
 
     use EnumTrait;
 
