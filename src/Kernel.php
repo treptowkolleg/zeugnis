@@ -42,6 +42,7 @@ class Kernel
         if (!$student) exit("Student not found.");
 
         echo sprintf("Es gibt %d Sprachverläufe.\n", $student->getLanguageTrajectories()->count());
+
         // Alle GeR-eingestuften Sprachkenntnisse ausgeben
         foreach ($student->getLanguageTrajectories() as $languageTrajectory) {
 
